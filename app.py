@@ -26,10 +26,15 @@ STATUS_COLOR = {
 CSS = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap');
-html, body, .stApp, [class*="st-"] { font-family: 'Poppins', sans-serif; }
+:root { color-scheme: light; }
+html, body, .stApp, .stApp p, .stApp label, .stApp li, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5,
+.stApp button, .stApp input, .stApp textarea, .stApp summary, .stApp th, .stApp td { font-family: 'Poppins', sans-serif; }
+/* jangan ubah font ikon (kalau tidak, nama ikon seperti 'arrow_right' tampil sebagai teks) */
+span[data-testid="stIconMaterial"], .material-symbols-rounded, [class*="material-symbols"] {
+    font-family: 'Material Symbols Rounded', 'Material Symbols Outlined' !important; }
 .stApp { background: #FBF4F1; }
 header[data-testid="stHeader"] { background: transparent; }
-.block-container { padding-top: 1.4rem; padding-bottom: 3rem; max-width: 1400px; }
+.block-container { padding-top: 3.4rem; padding-bottom: 3rem; max-width: 1400px; }
 
 /* ---------- sidebar ---------- */
 section[data-testid="stSidebar"] { background: #66794A; }
@@ -97,6 +102,27 @@ div[data-baseweb="tab-highlight"] { background-color: #66794A; }
 div[data-testid="stExpander"] { background: #fff; border-radius: 16px; border: none; box-shadow: 0 2px 10px rgba(90,70,60,.06); }
 .stDownloadButton button, .stButton button { border-radius: 999px; border: 1px solid #66794A; color: #66794A; background: #fff; }
 h2, h3 { color: #2F3A22; }
+
+/* ---------- kunci warna teks agar selalu terbaca (tema terang maupun gelap) ---------- */
+.stApp, .stApp p, .stApp li, .stApp label, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5,
+.stApp summary, .stApp summary *, [data-testid="stWidgetLabel"] p, [data-testid="stCaptionContainer"] { color: #2F3A22; }
+[data-testid="stCaptionContainer"] { color: #6f6f6f; }
+.stApp label[data-baseweb="radio"] p, .stApp div[role="radiogroup"] label p { color: #2F3A22; }
+section[data-testid="stSidebar"] p, section[data-testid="stSidebar"] span, section[data-testid="stSidebar"] label { color: #FFFFFF; }
+section[data-testid="stSidebar"] div[role="radiogroup"] > label:has(input:checked) p { color: #3F4F2B; font-weight: 600; }
+button[data-baseweb="tab"] p { color: #7a7a7a; }
+button[data-baseweb="tab"][aria-selected="true"] p { color: #66794A; font-weight: 600; }
+div[data-testid="stExpander"] details, div[data-testid="stExpander"] summary { background: #fff; border-radius: 16px; }
+div[data-testid="stExpander"] summary { padding: 12px 16px; }
+div[data-testid="stAlert"] { background: #FFFFFF; border: 1px solid #EFE3DE; border-radius: 14px; }
+div[data-testid="stAlert"] p { color: #2F3A22; }
+input, textarea, div[data-baseweb="select"] > div, div[data-baseweb="input"] { background-color: #FFFFFF !important; color: #2F3A22 !important; }
+div[data-testid="stFileUploaderDropzone"] { background: #FBF4F1; border-radius: 14px; }
+div[data-testid="stFileUploaderDropzone"] *, div[data-testid="stFileUploader"] small { color: #2F3A22; }
+div[data-baseweb="popover"] > div, ul[role="listbox"], div[data-baseweb="calendar"] { background: #FFFFFF !important; }
+div[data-baseweb="popover"] li, div[data-baseweb="popover"] *:not(svg):not(path) { color: #2F3A22; }
+.topbar .ttl { margin-bottom: 2px; }
+.topbar .sub { margin-top: 2px; }
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
